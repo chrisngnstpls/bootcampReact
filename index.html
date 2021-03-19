@@ -13,17 +13,49 @@
     <div id="root"></div>
 
     <script type='text/babel'>
+        const names = {
+            fname:'Jiohn',
+            lname:'Kojge'
+        }
         class HelloMessage extends React.Component {
+                
+                hello(){
+                    return "Hello"
+                }
                 render() {
                     return (
                         <div> 
-                            Hello {this.props.firstname} {this.props.lastname}
+                            <h1>{this.hello()} {this.props.names.fname} {this.props.names.lname}</h1>
                         </div>
                         );
                     }
         }
-        ReactDOM.render(<HelloMessage firstname="Taylor" lastname="Swift" />,
-        document.getElementById('root'));
+        class GoodByeMsg extends React.Component {
+                
+                bye(){
+                    return "Goodbye"
+                }
+                render() {
+                    return (
+                        <div> 
+                            <h1>{this.bye()} {this.props.names.fname} {this.props.names.lname}</h1>
+                        </div>
+                        );
+                    }
+        }
+
+
+// Include multiple renders in a <div></div>
+// Also reactJs classes are PascalCaseSensitive wtf
+        ReactDOM.render(
+            <div>
+                <HelloMessage names={names}/>
+                <GoodByeMsg names={names}/>
+            </div>,
+                document.getElementById('root')
+        );
+            
+
     </script>
   </body>
 </html>
